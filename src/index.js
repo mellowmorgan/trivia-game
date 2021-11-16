@@ -3,31 +3,24 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import Game from './game.js';
+import TriviaInterface from './triviaInterface';
 
 const game = new Game();
-let request = new XMLHttpRequest();
-const url = "https://opentdb.com/api.php?amount=10";
-let response;
-request.onreadystatechange = function() {
-  if (this.readyState === 4 && this.status === 200) {
-    response = JSON.parse(this.responseText);
-    getElements(response);
-  }
-};
-
-request.open("GET", url, true);
-request.send();
 
 let counter=0;
-function getElements(response){
-  game.generateCards(response.results);
+let promise = TriviaInterface.getTrivia();
+  promise.then(function(response){
+    const body = JSON.parse(response);
+  game.generateCards(body.results);
   $('#question').html(game.cards[counter].question);
   let htmlForAnswers = "";
   game.cards[counter].answers.forEach(element => {
     htmlForAnswers += `<li>${element}</li>`;
   });
   $('#answers-list').html(htmlForAnswers);
-}
+  }, function(error) {
+    $('.showErrors').text(`There was an error processing your request: ${error}`);
+  });
 
 $('#card').on('click',  () => {
   $('#question').html(game.cards[counter].correct);
