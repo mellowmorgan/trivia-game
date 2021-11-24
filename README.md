@@ -1,31 +1,29 @@
-# (Application Name)
+# Trivia Game
 
-#### (Brief Description of Application)
+#### Webpage with trivia questions from opentdb API
 
-#### By (Your Name Here)
+#### By Morgan Waites
 
 ## Technologies Used
 
-* _List all_
-* _the major technologies_
-* _you used in your project_
-* _here_
+* OpenTDB API
+* Javascript
+* HTML/CSS/Bootstrap
 
 ## Description
 
+Trivia question randomly generated from api, click card to reveal answer. 10 questions until page refreshed, then 10 new questions generated.
+
 ## Setup/Installation Requirements
 
-* _This is a great place_
-* _to list setup instructions_
-* _in a simple_
-* _easy-to-understand_
-* _format_
+* git clone this repo
+* navigate to top-level of directory
+* npm install
+* npm run start
 
 ## Known Bugs
 
-* _Any known issues_
-* _should go here_
+No known bugs
 
 ## License
-
-## Contact Information
+[MIT](https://opensource.org/licenses/MIT) Copyright 2021 Morgan Waites .
